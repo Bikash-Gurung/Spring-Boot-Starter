@@ -3,6 +3,7 @@ package com.example.SpringBootStarter.user;
 import java.security.Principal;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +20,13 @@ public class UserController {
 
     private final UserService userService;
 
-    @PatchMapping
+    @PatchMapping("/change-password")
+    @PreAuthorize("hasAnyRole('admin:update','user:update')")
     public ResponseEntity<?> changePassword(
             @RequestBody ChangePasswordRequest request,
             Principal connectedUser) {
         userService.changePassword(request, connectedUser);
+
         return ResponseEntity.ok().build();
     }
 }

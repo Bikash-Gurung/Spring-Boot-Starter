@@ -15,6 +15,7 @@ public class ApplicationAuditAware implements AuditorAware<Integer> {
         Authentication authentication = SecurityContextHolder
                 .getContext()
                 .getAuthentication();
+                
         if (authentication == null ||
                 !authentication.isAuthenticated() ||
                 authentication instanceof AnonymousAuthenticationToken) {
@@ -22,6 +23,7 @@ public class ApplicationAuditAware implements AuditorAware<Integer> {
         }
 
         User userPrincipal = (User) authentication.getPrincipal();
+
         return Optional.ofNullable(userPrincipal.getId());
     }
 }

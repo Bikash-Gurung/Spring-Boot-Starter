@@ -14,33 +14,32 @@ import static com.example.SpringBootStarter.user.Permission.ADMIN_CREATE;
 import static com.example.SpringBootStarter.user.Permission.ADMIN_DELETE;
 import static com.example.SpringBootStarter.user.Permission.ADMIN_READ;
 import static com.example.SpringBootStarter.user.Permission.ADMIN_UPDATE;
-import static com.example.SpringBootStarter.user.Permission.MANAGER_CREATE;
-import static com.example.SpringBootStarter.user.Permission.MANAGER_DELETE;
-import static com.example.SpringBootStarter.user.Permission.MANAGER_READ;
-import static com.example.SpringBootStarter.user.Permission.MANAGER_UPDATE;
+import static com.example.SpringBootStarter.user.Permission.USER_CREATE;
+import static com.example.SpringBootStarter.user.Permission.USER_DELETE;
+import static com.example.SpringBootStarter.user.Permission.USER_READ;
+import static com.example.SpringBootStarter.user.Permission.USER_UPDATE;
 
 @RequiredArgsConstructor
 public enum Role {
 
-  USER(Collections.emptySet()),
   ADMIN(
           Set.of(
                   ADMIN_READ,
                   ADMIN_UPDATE,
                   ADMIN_DELETE,
                   ADMIN_CREATE,
-                  MANAGER_READ,
-                  MANAGER_UPDATE,
-                  MANAGER_DELETE,
-                  MANAGER_CREATE
+                  USER_READ,
+                  USER_UPDATE,
+                  USER_DELETE,
+                  USER_CREATE
           )
   ),
-  MANAGER(
+  USER(
           Set.of(
-                  MANAGER_READ,
-                  MANAGER_UPDATE,
-                  MANAGER_DELETE,
-                  MANAGER_CREATE
+                  USER_READ,
+                  USER_UPDATE,
+                  USER_DELETE,
+                  USER_CREATE
           )
   );
 

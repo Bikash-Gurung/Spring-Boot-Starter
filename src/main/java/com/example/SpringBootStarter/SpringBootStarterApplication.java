@@ -1,8 +1,5 @@
 package com.example.SpringBootStarter;
 
-import static com.example.SpringBootStarter.user.Role.ADMIN;
-import static com.example.SpringBootStarter.user.Role.MANAGER;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,15 +23,6 @@ public class SpringBootStarterApplication {
 	@Value("${application.user.admin.password}")
 	private String adminPassword;
 
-	@Value("${application.user.manager.first-name}")
-	private String managerFirstName;
-	@Value("${application.user.manager.last-name}")
-	private String managerLastName;
-	@Value("${application.user.manager.email}")
-	private String managerEmail;
-	@Value("${application.user.manager.password}")
-	private String managerPassword;
-
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootStarterApplication.class, args);
 	}
@@ -48,23 +36,8 @@ public class SpringBootStarterApplication {
 					.lastname(adminLastName)
 					.email(adminEmail)
 					.password(adminPassword)
-					.role(ADMIN)
 					.build();
-			service.register(admin);
-			// System.out.println("Admin token: " +
-			// service.register(admin).getAccessToken());
-
-			var manager = RegisterRequest.builder()
-					.firstname(managerFirstName)
-					.lastname(managerLastName)
-					.email(managerEmail)
-					.password(managerPassword)
-					.role(MANAGER)
-					.build();
-			service.register(manager);
-
-			// System.out.println("Manager token: " +
-			// service.register(manager).getAccessToken());
+			service.registerAdmin(admin);
 		};
 	}
 

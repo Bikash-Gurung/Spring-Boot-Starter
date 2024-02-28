@@ -1,4 +1,4 @@
-package com.example.SpringBootStarter.config;
+package com.example.SpringBootStarter.auth;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,11 +10,9 @@ import com.example.SpringBootStarter.token.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class LogoutService implements LogoutHandler {
 
     private final TokenRepository tokenRepository;
@@ -25,13 +23,16 @@ public class LogoutService implements LogoutHandler {
             HttpServletResponse response,
             Authentication authentication) {
         final String authHeader = request.getHeader("Authorization");
-        final String jwt;
+        final String accessToken;
+
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             return;
         }
-        jwt = authHeader.substring(7);
-        var storedToken = tokenRepository.findByToken(jwt)
+
+        accessToken = authHeader.substring(7);
+        var storedToken = tokenRepository.findByAccessToken(accessToken)
                 .orElse(null);
+                
         if (storedToken != null) {
             storedToken.setExpired(true);
             storedToken.setRevoked(true);

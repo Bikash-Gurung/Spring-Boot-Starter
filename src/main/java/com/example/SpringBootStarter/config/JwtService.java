@@ -54,15 +54,6 @@ public class JwtService {
     private String buildToken(
             UserDetails userDetails,
             long expiration) {
-        // return Jwts
-        // .builder()
-        // .setClaims(extraClaims)
-        // .setSubject(userDetails.getUsername())
-        // .setIssuedAt(new Date(System.currentTimeMillis()))
-        // .setExpiration(new Date(System.currentTimeMillis() + expiration))
-        // .signWith(getSignInKey(), SignatureAlgorithm.HS256)
-        // .compact();
-
         return Jwts.builder()
                 .subject(userDetails.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
@@ -85,13 +76,6 @@ public class JwtService {
     }
 
     private Claims extractAllClaims(String token) {
-        // return Jwts
-        // .parserBuilder()
-        // .setSigningKey(getSignInKey())
-        // .build()
-        // .parseClaimsJws(token)
-        // .getBody();
-
         return Jwts.parser()
                 .verifyWith((SecretKey) getSignInKey())
                 .build()

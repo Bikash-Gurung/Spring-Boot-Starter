@@ -4,10 +4,9 @@ import com.example.SpringBootStarter.user.User;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -24,14 +23,14 @@ import lombok.NoArgsConstructor;
 public class Token {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   public Integer id;
 
   @Column(unique = true)
-  public String token;
+  public String accessToken;
 
-  @Enumerated(EnumType.STRING)
-  public TokenType tokenType = TokenType.BEARER;
+  @Column(unique = true)
+  public String refreshToken;
 
   public boolean revoked;
 

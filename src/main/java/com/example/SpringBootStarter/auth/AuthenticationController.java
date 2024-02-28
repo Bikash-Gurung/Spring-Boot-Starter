@@ -1,7 +1,6 @@
 package com.example.SpringBootStarter.auth;
 
-import java.io.IOException;
-
+import org.apache.coyote.BadRequestException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,10 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.SpringBootStarter.auth.dto.AuthenticationRequest;
 import com.example.SpringBootStarter.auth.dto.AuthenticationResponse;
+import com.example.SpringBootStarter.auth.dto.RefreshTokenRequest;
 import com.example.SpringBootStarter.auth.dto.RegisterRequest;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -26,21 +24,21 @@ public class AuthenticationController {
   @PostMapping("/register")
   public ResponseEntity<AuthenticationResponse> register(
       @RequestBody RegisterRequest request
-  ) {
-    return ResponseEntity.ok(service.register(request));
+  ) throws BadRequestException {
+    return ResponseEntity.ok(service.registerUser(request));
   }
-  @PostMapping("/authenticate")
+  
+  @PostMapping("/login")
   public ResponseEntity<AuthenticationResponse> authenticate(
       @RequestBody AuthenticationRequest request
   ) {
     return ResponseEntity.ok(service.authenticate(request));
   }
 
-  @PostMapping("/refresh-token")
-  public void refreshToken(
-      HttpServletRequest request,
-      HttpServletResponse response
-  ) throws IOException {
-    service.refreshToken(request, response);
+  @PostMapping("/refresh")
+  public ResponseEntity<AuthenticationResponse> refreshToken(@RequestBody RefreshTokenRequest request) throws BadRequestException {
+    System.out.println("Tokennnnnn: " + request.getRefreshToken());
+
+    return ResponseEntity.ok(service.refreshToken(request));
   }
 }
