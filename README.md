@@ -25,9 +25,11 @@
 
 **Step 1:** Clone this repository on your local machine
 
-**Step 2:** Run following command in project directory "mvn clean install -Dmaven.test.skip=true"
+**Step 2:** Create application.yml file by referencing application.example.yml file and provide values for the properties
 
-**Step 3:** Then run "docker-compose up"
+**Step 3:** Run following command in project directory "mvn clean install -Dmaven.test.skip=true"
+
+**Step 4:** Then run "docker-compose up"
 
 ## Diagram:
 
