@@ -25,8 +25,3 @@ application:
       last-name: <ADMIN_USER_LAST_NAME>
       email: <ADMIN_USER_EMAIL>
       password: <ADMIN_USER_PASSWORD>
-    manager:
-      first-name: <MANAGER_USER_FIRST_NAME>
-      last-name: <MANAGER_USER_LAST_NAME>
-      email: <MANAGER_USER_EMAIL>
-      password: <MANAGER_USER_PASSWORD>
