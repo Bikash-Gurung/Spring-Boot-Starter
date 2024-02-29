@@ -20,3 +20,17 @@
 3. Refresh access token
 4. Logout
 5. Change password
+
+## Steps to run:
+
+**Step 1:** Clone this repository on your local machine
+
+**Step 2:** Run following command in project directory "mvn clean install -Dmaven.test.skip=true"
+
+**Step 3:** Then run "docker-compose up"
+
+## Diagram:
+
+![Alt text](src/main/resources/static/Spring%20Starter%20System.png)
+
+![Alt text](src/main/resources/static/Spring%20Starter%20Flow%20Diagram.png)
