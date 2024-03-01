@@ -12,6 +12,7 @@
 - Lombok
 - Docker and Docker Compose
 - JWT
+- Google style check
 
 ## Features:
 
