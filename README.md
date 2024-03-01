@@ -37,3 +37,11 @@
 ![Alt text](src/main/resources/static/Spring%20Starter%20System.png)
 
 ![Alt text](src/main/resources/static/Spring%20Starter%20Flow%20Diagram.png)
+
+## ToDos:
+
+1. Email notification
+2. Forget password (Send OTP in email)
+3. Store tokens in Redis
+4. Create profiles for fidderent environments (DEV, QA, PROD)
+5. Add Swagger Documentation
