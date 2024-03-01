@@ -46,3 +46,4 @@
 4. Create profiles for fidderent environments (DEV, QA, PROD)
 5. Add Swagger Documentation
 6. Custom exceptions
+7. Add API detail in README.md (Description, Request, Response)
