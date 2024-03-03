@@ -24,13 +24,23 @@
 
 ## Steps to run:
 
+### Option-1
+
 **Step 1:** Clone this repository on your local machine
 
 **Step 2:** Create application.yml file by referencing application.example.yml file and provide values for the properties
 
-**Step 3:** Run following command in project directory "mvn clean install -Dmaven.test.skip=true"
+**Step 3:** Then run "docker-compose up"
 
-**Step 4:** Then run "docker-compose up"
+### Option-2
+
+**Step 1:** Clone this repository on your local machine
+
+**Step 2:** Intall MySQL in your machine (if not installed)
+
+**Step 3:** Create application.yml file by referencing application.example.yml file and provide values for the properties
+
+**Step 4:** Run Spring Boot App using IDE or command "mvn spring-boot:run"
 
 ## Diagram:
 
